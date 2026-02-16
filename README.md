@@ -15,13 +15,126 @@ views/ -- staging + mart views
 procedures/ -- stored procedures (portfolio focus)
 migrations/ -- schema changes over time
 docs/
+---
 
+## Database Setup Workflow
 
-## Stored Procedures (Portfolio)
-### 1) dbo.usp_GetCustomerOrders
+This project follows a structured SQL development workflow using 
+Git version control and organized project folders.
+
+### 1. Project Folder Organization
+
+The project was created on the Desktop and structured as:
+
+GitSQLPractice/
+│
+├── database/
+│ ├── tables/ → Table creation scripts (DDL)
+│ ├── data/ → Seed data scripts
+│ ├── views/ → Reporting and staging views
+│ ├── procedures/ → Stored procedures
+│ ├── migrations/ → Schema evolution scripts
+│
+├── docs/ → Documentation and notes
+├── README.md
+├── .gitignore
+
+This structure mirrors professional database DevOps workflows 
+where database objects are version-controlled separately.
+
+---
+
+## 2. Table Creation Process
+
+Tables were created using T-SQL scripts in SSMS and saved into:
+database/tables/create_tables.sql
+
+This ensures:
+
+- Database schema reproducibility
+- Version tracking of schema changes
+- Easy deployment to new environments
+- Collaboration readiness
+
+Example:
+
+```sql
+CREATE TABLE dbo.Customers (
+    CustomerID INT IDENTITY PRIMARY KEY,
+    Email NVARCHAR(100),
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+3. Integration with Git
+
+After schema creation:
+
+Scripts were saved to organized folders
+
+Git was initialized locally
+
+Commits tracked schema evolution
+
+Repository pushed to GitHub
+
+This demonstrates database version control best practices.
+---
+
+## 3. Stored Procedures (Portfolio)
+### dbo.usp_GetCustomerOrders
 **Purpose:** Returns orders for a customer, with optional date filters and order totals.
 
 **Example:**
 ```sql
 EXEC dbo.usp_GetCustomerOrders @CustomerID = 1;
 EXEC dbo.usp_GetCustomerOrders @CustomerID = 1, @StartDate='2026-02-01', @EndDate='2026-02-28';
+
+---
+## Database Views (Analytics Layer)
+
+This project includes SQL views designed for reporting, data cleaning, 
+and analytics preparation. These demonstrate how raw transactional data 
+can be transformed into business-ready datasets.
+
+---
+
+### 1. stg_customers_clean (Staging View)
+
+Purpose:
+- Clean and standardize customer data
+- Prepare data for downstream reporting
+- Remove inconsistencies before analytics
+
+Example:
+
+```sql
+SELECT * FROM dbo.stg_customers_clean;
+
+Use Case:
+
+Data preprocessing
+
+Data quality improvement
+
+BI data staging
+
+2. mart_monthly_sales (Data Mart View)
+
+Purpose:
+
+Aggregate sales by month
+
+Support business reporting and dashboards
+
+Provide quick insights into sales performance
+
+SELECT * FROM dbo.mart_monthly_sales;
+
+Use Case:
+
+Power BI dashboards
+
+Monthly reporting
+
+Executive analytics summaries
