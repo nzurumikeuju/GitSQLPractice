@@ -69,11 +69,11 @@ CREATE TABLE dbo.Customers (
     LastName NVARCHAR(50),
     CreatedAt DATETIME DEFAULT GETDATE()
 );
-
+```
 ---
 ## 3. Integration with Git
 
-After schema creation:Scripts were saved to organized folders
+After schema creation, Scripts were saved to organized folders
 Git was initialized locally
 Commits tracked schema evolution
 Repository pushed to GitHub
