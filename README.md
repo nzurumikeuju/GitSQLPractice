@@ -1,6 +1,14 @@
 # GitSQLPractice (SSMS + VS Code + GitHub)
+## Project Overview
 
-A hands-on T-SQL project to practice **Git version control** with **SQL Server** using **SSMS for execution** and **VS Code for source control**.
+This project demonstrates a professional SQL Server development workflow 
+integrated with Git version control. It includes database schema creation, 
+seed data management, analytical views, and stored procedures designed 
+for reporting and business intelligence scenarios.
+
+The project was developed using SSMS for database execution and 
+VS Code for source control integration with GitHub.
+
 
 ## Tech Stack
 - SQL Server / T-SQL (SSMS)
@@ -138,3 +146,26 @@ Power BI dashboards
 Monthly reporting
 
 Executive analytics summaries
+
+## Business Context (Simulated Scenario)
+
+This project models a simple sales system:
+
+- Customers place orders
+- Orders contain multiple products
+- Sales data is aggregated for reporting
+- Views support analytics and dashboards
+
+The structure reflects common enterprise data workflows:
+Transactional Tables → Staging Views → Data Mart Views → Reports.
+
+## Key Learnings
+
+- Version controlling SQL projects using Git
+- Structuring database projects professionally
+- Designing analytical SQL views
+- Writing reusable stored procedures
+- Integrating SSMS with VS Code workflows
+
+
+This repository demonstrates a practical SQL DevOps workflow and is part of my data analytics and database development portfolio.
