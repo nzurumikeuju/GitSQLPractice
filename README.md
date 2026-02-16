@@ -1,10 +1,7 @@
 # GitSQLPractice (SSMS + VS Code + GitHub)
 ## Project Overview
 
-This project demonstrates a professional SQL Server development workflow 
-integrated with Git version control. It includes database schema creation, 
-seed data management, analytical views, and stored procedures designed 
-for reporting and business intelligence scenarios.
+This project demonstrates a professional SQL Server development workflow integrated with Git version control. It includes database schema creation, seed data management, analytical views, and stored procedures designed for reporting and business intelligence scenarios.
 
 The project was developed using SSMS for database execution and 
 VS Code for source control integration with GitHub.
@@ -74,22 +71,20 @@ CREATE TABLE dbo.Customers (
     LastName NVARCHAR(50),
     CreatedAt DATETIME DEFAULT GETDATE()
 );
-3. Integration with Git
 
-After schema creation:
+---
 
-Scripts were saved to organized folders
+## 3. Integration with Git
 
+After schema creation:Scripts were saved to organized folders
 Git was initialized locally
-
 Commits tracked schema evolution
-
 Repository pushed to GitHub
 
 This demonstrates best practices for database version control.
 ---
 
-## 3. Stored Procedures (Portfolio)
+## 4. Stored Procedures (Portfolio)
 ### dbo.usp_GetCustomerOrders
 **Purpose:** Returns orders for a customer, with optional date filters and order totals.
 
@@ -99,7 +94,7 @@ EXEC dbo.usp_GetCustomerOrders @CustomerID = 1;
 EXEC dbo.usp_GetCustomerOrders @CustomerID = 1, @StartDate='2026-02-01', @EndDate='2026-02-28';
 
 ---
-## Database Views (Analytics Layer)
+## 5. Database Views (Analytics Layer)
 
 This project includes SQL views designed for reporting, data cleaning, 
 and analytics preparation. These demonstrate how raw transactional data 
@@ -120,34 +115,29 @@ Example:
 SELECT * FROM dbo.stg_customers_clean;
 
 Use Case:
-
 Data preprocessing
-
 Data quality improvement
-
 BI data staging
 
-2. mart_monthly_sales (Data Mart View)
+### 2. mart_monthly_sales (Data Mart View)
 
 Purpose:
 
 Aggregate sales by month
-
 Support business reporting and dashboards
-
 Provide quick insights into sales performance
 
+Example:
+```sql
 SELECT * FROM dbo.mart_monthly_sales;
 
 Use Case:
-
 Power BI dashboards
-
 Monthly reporting
-
 Executive analytics summaries
 
-## Business Context (Simulated Scenario)
+---
+## 6. Business Context (Simulated Scenario)
 
 This project models a simple sales system:
 
@@ -159,13 +149,13 @@ This project models a simple sales system:
 The structure reflects common enterprise data workflows:
 Transactional Tables → Staging Views → Data Mart Views → Reports.
 
-## Key Learnings
+---
+## 7. Key Learnings
 
 - Version controlling SQL projects using Git
 - Structuring database projects professionally
 - Designing analytical SQL views
 - Writing reusable stored procedures
 - Integrating SSMS with VS Code workflows
-
 
 This repository demonstrates a practical SQL DevOps workflow and is part of my data analytics and database development portfolio.
