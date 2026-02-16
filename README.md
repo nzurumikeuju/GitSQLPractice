@@ -89,7 +89,7 @@ This demonstrates best practices for database version control.
 ```sql
 EXEC dbo.usp_GetCustomerOrders @CustomerID = 1;
 EXEC dbo.usp_GetCustomerOrders @CustomerID = 1, @StartDate='2026-02-01', @EndDate='2026-02-28';
-
+```
 ---
 ## 5. Database Views (Analytics Layer)
 
@@ -110,6 +110,7 @@ Example:
 
 ```sql
 SELECT * FROM dbo.stg_customers_clean;
+```
 
 Use Case:
 Data preprocessing
@@ -127,7 +128,7 @@ Provide quick insights into sales performance
 Example:
 ```sql
 SELECT * FROM dbo.mart_monthly_sales;
-
+```
 Use Case:
 Power BI dashboards
 Monthly reporting
