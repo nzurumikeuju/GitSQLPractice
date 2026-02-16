@@ -86,7 +86,7 @@ Commits tracked schema evolution
 
 Repository pushed to GitHub
 
-This demonstrates database version control best practices.
+This demonstrates best practices for database version control.
 ---
 
 ## 3. Stored Procedures (Portfolio)
