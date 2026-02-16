@@ -3,9 +3,7 @@
 
 This project demonstrates a professional SQL Server development workflow integrated with Git version control. It includes database schema creation, seed data management, analytical views, and stored procedures designed for reporting and business intelligence scenarios.
 
-The project was developed using SSMS for database execution and 
-VS Code for source control integration with GitHub.
-
+The project was developed using SSMS for database execution and VS Code for source control integration with GitHub.
 
 ## Tech Stack
 - SQL Server / T-SQL (SSMS)
@@ -73,7 +71,6 @@ CREATE TABLE dbo.Customers (
 );
 
 ---
-
 ## 3. Integration with Git
 
 After schema creation:Scripts were saved to organized folders
