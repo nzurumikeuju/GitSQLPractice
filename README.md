@@ -89,6 +89,7 @@ This demonstrates best practices for database version control.
 ```sql
 EXEC dbo.usp_GetCustomerOrders @CustomerID = 1;
 EXEC dbo.usp_GetCustomerOrders @CustomerID = 1, @StartDate='2026-02-01', @EndDate='2026-02-28';
+
 ```
 ---
 ## 5. Database Views (Analytics Layer)
