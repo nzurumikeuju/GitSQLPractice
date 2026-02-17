@@ -3,9 +3,7 @@
 
 This project demonstrates a professional SQL Server development workflow integrated with Git version control. It includes database schema creation, seed data management, analytical views, and stored procedures designed for reporting and business intelligence scenarios.
 
-The project was developed using SSMS for database execution and 
-VS Code for source control integration with GitHub.
-
+The project was developed using SSMS for database execution and VS Code for source control integration with GitHub.
 
 ## Tech Stack
 - SQL Server / T-SQL (SSMS)
@@ -71,12 +69,16 @@ CREATE TABLE dbo.Customers (
     LastName NVARCHAR(50),
     CreatedAt DATETIME DEFAULT GETDATE()
 );
-
+```
 ---
 ## 3. Integration with Git
 
+<<<<<<< HEAD
 
 After schema creation:Scripts were saved to organized folders
+=======
+After schema creation, Scripts were saved to organized folders
+>>>>>>> e4a4c831b55c752c0626f2f2f5c6c7ceb290edda
 Git was initialized locally
 Commits tracked schema evolution
 Repository pushed to GitHub
@@ -84,7 +86,7 @@ Repository pushed to GitHub
 This demonstrates best practices for database version control.
 ---
 
-## 4. Stored Procedures (Portfolio)
+## 4. Create a Stored Procedure
 ### dbo.usp_GetCustomerOrders
 **Purpose:** Returns orders for a customer, with optional date filters and order totals.
 
@@ -93,6 +95,7 @@ This demonstrates best practices for database version control.
 EXEC dbo.usp_GetCustomerOrders @CustomerID = 1;
 EXEC dbo.usp_GetCustomerOrders @CustomerID = 1, @StartDate='2026-02-01', @EndDate='2026-02-28';
 
+```
 ---
 ## 5. Database Views (Analytics Layer)
 
@@ -102,34 +105,53 @@ can be transformed into business-ready datasets.
 
 ---
 
-### 1. stg_customers_clean (Staging View)
-
+### 1. CREATE VIEW stg_customers_clean (Staging View)
+Example:
+```sql
+CREATE VIEW stg.CustomersClean AS
+SELECT
+    CustomerID,
+    LOWER(Email) AS Email,
+    FirstName,
+    LastName,
+    CreatedAt
+FROM dbo.Customers;
+GO
+```
 Purpose:
 - Clean and standardize customer data
 - Prepare data for downstream reporting
 - Remove inconsistencies before analytics
-
-Example:
-
-```sql
-SELECT * FROM dbo.stg_customers_clean;
-
+ 
 Use Case:
 Data preprocessing
 Data quality improvement
 BI data staging
 
-### 2. mart_monthly_sales (Data Mart View)
+### 2. CREATE VIEW mart_monthly_sales (Data Mart View)
 
+```sql
+CREATE VIEW mart.MonthlySales AS
+SELECT
+    YEAR(o.OrderDate)  AS SalesYear,
+    MONTH(o.OrderDate) AS SalesMonth,
+    SUM(oi.Quantity * oi.UnitPrice) AS TotalSales
+FROM dbo.Orders o
+JOIN dbo.OrderItems oi
+    ON o.OrderID = oi.OrderID
+WHERE o.Status = 'Completed'
+GROUP BY YEAR(o.OrderDate), MONTH(o.OrderDate);
+GO
+```
+Result
+```sql
+SELECT * FROM mart.MonthlySales
+ORDER BY SalesYear, SalesMonth;
+```
 Purpose:
-
 Aggregate sales by month
 Support business reporting and dashboards
 Provide quick insights into sales performance
-
-Example:
-```sql
-SELECT * FROM dbo.mart_monthly_sales;
 
 Use Case:
 Power BI dashboards
