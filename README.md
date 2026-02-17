@@ -81,7 +81,7 @@ Repository pushed to GitHub
 This demonstrates best practices for database version control.
 ---
 
-## 4. Stored Procedures (Portfolio)
+## 4. Create a Stored Procedure
 ### dbo.usp_GetCustomerOrders
 **Purpose:** Returns orders for a customer, with optional date filters and order totals.
 
