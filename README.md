@@ -102,6 +102,28 @@ can be transformed into business-ready datasets.
 
 ### 1. CREATE VIEW stg_customers_clean (Staging View)
 Example:
+```sql
+CREATE VIEW stg.CustomersClean AS
+SELECT
+    CustomerID,
+    LOWER(Email) AS Email,
+    FirstName,
+    LastName,
+    CreatedAt
+FROM dbo.Customers;
+GO
+```
+Purpose:
+- Clean and standardize customer data
+- Prepare data for downstream reporting
+- Remove inconsistencies before analytics
+ 
+Use Case:
+Data preprocessing
+Data quality improvement
+BI data staging
+
+### 2. CREATE VIEW mart_monthly_sales (Data Mart View)
 
 ```sql
 CREATE VIEW mart.MonthlySales AS
@@ -120,22 +142,6 @@ Result
 ```sql
 SELECT * FROM mart.MonthlySales
 ORDER BY SalesYear, SalesMonth;
-```
-Purpose:
-- Clean and standardize customer data
-- Prepare data for downstream reporting
-- Remove inconsistencies before analytics
- 
-Use Case:
-Data preprocessing
-Data quality improvement
-BI data staging
-
-### 2. CREATE VEW mart_monthly_sales (Data Mart View)
-
-Example:
-```sql
-SELECT * FROM dbo.mart_monthly_sales;
 ```
 Purpose:
 Aggregate sales by month
