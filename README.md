@@ -73,8 +73,8 @@ CREATE TABLE dbo.Customers (
 );
 
 ---
-
 ## 3. Integration with Git
+
 
 After schema creation:Scripts were saved to organized folders
 Git was initialized locally
