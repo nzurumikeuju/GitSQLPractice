@@ -100,36 +100,48 @@ can be transformed into business-ready datasets.
 
 ---
 
-### 1. stg_customers_clean (Staging View)
+### 1. CREATE VIEW stg_customers_clean (Staging View)
+Example:
 
+```sql
+CREATE VIEW mart.MonthlySales AS
+SELECT
+    YEAR(o.OrderDate)  AS SalesYear,
+    MONTH(o.OrderDate) AS SalesMonth,
+    SUM(oi.Quantity * oi.UnitPrice) AS TotalSales
+FROM dbo.Orders o
+JOIN dbo.OrderItems oi
+    ON o.OrderID = oi.OrderID
+WHERE o.Status = 'Completed'
+GROUP BY YEAR(o.OrderDate), MONTH(o.OrderDate);
+GO
+```
+Result
+```sql
+SELECT * FROM mart.MonthlySales
+ORDER BY SalesYear, SalesMonth;
+```
 Purpose:
 - Clean and standardize customer data
 - Prepare data for downstream reporting
 - Remove inconsistencies before analytics
-
-Example:
-
-```sql
-SELECT * FROM dbo.stg_customers_clean;
-```
-
+ 
 Use Case:
 Data preprocessing
 Data quality improvement
 BI data staging
 
-### 2. mart_monthly_sales (Data Mart View)
-
-Purpose:
-
-Aggregate sales by month
-Support business reporting and dashboards
-Provide quick insights into sales performance
+### 2. CREATE VEW mart_monthly_sales (Data Mart View)
 
 Example:
 ```sql
 SELECT * FROM dbo.mart_monthly_sales;
 ```
+Purpose:
+Aggregate sales by month
+Support business reporting and dashboards
+Provide quick insights into sales performance
+
 Use Case:
 Power BI dashboards
 Monthly reporting
