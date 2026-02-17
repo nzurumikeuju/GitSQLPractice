@@ -1,7 +1,7 @@
 # GitSQLPractice (SSMS + VS Code + GitHub)
 ## Project Overview
 
-This project demonstrates a professional SQL Server development workflow integrated with Git version control. It includes database schema creation, seed data management, analytical views, and stored procedures designed for reporting and business intelligence scenarios.
+This project demonstrates using Git for version control and integrating it into your SQL development workflow. It includes database schema creation, seed data management, analytical views, and stored procedures designed for reporting and business intelligence scenarios.
 
 The project was developed using SSMS for database execution and VS Code for source control integration with GitHub.
 
